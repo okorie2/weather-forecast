@@ -9,31 +9,41 @@ const api = {
 
 
 /*!
-  THIS IS FOR COLLECTING THE INPUT SEARCHES FROM THE HTML INPUT FIELD
-*/
-const search = document.querySelector('.search');
-search.addEventListener('keypress', setQuery);
+    THIS IS FOR CHECKING AND GETTING THE WEATHER RESULT FROM THE LOCALSTORAGE INCASE
+    THE USER PREVIOUSLY SAVED THE WEATHER RESULT 
+  */
+if (localStorage && localStorage.getItem('savedWeather')) {
+  render(weatherResponse(localStorage.getItem('savedWeather')));
+}else {
+  
+  /*!
+    THIS IS FOR COLLECTING THE INPUT SEARCHES FROM THE HTML INPUT FIELD
+  */
+  const search = document.querySelector('.search');
+  search.addEventListener('keypress', setQuery);
 
 
-/*!
-  THIS IS FOR SETTING THE KEYPRESS EVENT LISTENER TO RUN THE API REQUEST
-*/
-function setQuery(evt) {
-  if (evt.keyCode == 13) {
-    apiRequest(search.value);
+  /*!
+    THIS IS FOR SETTING THE KEYPRESS EVENT LISTENER TO RUN THE API REQUEST
+  */
+  function setQuery(evt) {
+    if (evt.keyCode == 13) {
+      apiRequest(search.value);
+    }
   }
-}
 
 
-/*!
-  THIS IS FOR GETTING THE WEATHER RESPONSE FOR THE INPUT FROM THE USER
-*/
-function apiRequest(query) {
-  fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-    .then(weather => {
-      return weather.json();
-    })
-    .then(weatherResponse);
+  /*!
+    THIS IS FOR GETTING THE WEATHER RESPONSE FOR THE INPUT FROM THE USER
+  */
+  function apiRequest(query) {
+    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+      .then(weather => {
+        return weather.json();
+      })
+      .then(weatherResponse);
+  }
+  
 }
 
 
@@ -41,6 +51,12 @@ function apiRequest(query) {
   THIS IS FOR PASSING THE RESPONSE IN SUITABLE FORMAT TO THE HTML PAGE
 */
 function weatherResponse (weather) {
+
+  /*!
+    THIS IS FOR SAVING THE WEATHER RESULT INCASE THE USER RESTART HIS BROWSER AND RELOADS THE Page
+  */
+  localStorage.setItem('savedWeather',weather);
+
   let city = document.querySelector('.city');
   city.innerText = `${weather.name}, ${weather.sys.country}`;
 
