@@ -13,7 +13,7 @@ const api = {
     THE USER PREVIOUSLY SAVED THE WEATHER RESULT 
   */
 if (localStorage && localStorage.getItem('savedWeather')) {
-  render(weatherResponse(localStorage.getItem('savedWeather')));
+  weatherResponse(localStorage.getItem('savedWeather'));
 }else {
   
   /*!
