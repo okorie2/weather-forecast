@@ -1,0 +1,19 @@
+/*!
+  I WILL TELL WHERE TO EDIT HERE! :)
+*/
+{
+  "name": "weather-forcast",
+  "short_name": "Ela",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#4989dd",
+  "theme_color": "#4989dd", 
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "",
+      "type": "image/png", 
+      "sizes": "72x72"
+    }
+  ]
+}
