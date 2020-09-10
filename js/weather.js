@@ -15,7 +15,7 @@ const api = {
 if (localStorage && localStorage.getItem('savedWeather')) {
   weatherResponse(localStorage.getItem('savedWeather'));
 }else {
-  
+  console.log("ok")
   /*!
     THIS IS FOR COLLECTING THE INPUT SEARCHES FROM THE HTML INPUT FIELD
   */
@@ -41,7 +41,14 @@ if (localStorage && localStorage.getItem('savedWeather')) {
       .then(weather => {
         return weather.json();
       })
-      .then(weatherResponse);
+      .then(
+        
+        /*!
+          THIS IS FOR SAVING THE WEATHER RESULT INCASE THE USER RESTART HIS BROWSER AND RELOADS THE Page
+        */
+        localStorage.setItem('savedWeather',weather))
+      .then(weatherResponse)
+      .catch(err => alert('You did something wrong', err));
   }
   
 }
@@ -51,11 +58,6 @@ if (localStorage && localStorage.getItem('savedWeather')) {
   THIS IS FOR PASSING THE RESPONSE IN SUITABLE FORMAT TO THE HTML PAGE
 */
 function weatherResponse (weather) {
-
-  /*!
-    THIS IS FOR SAVING THE WEATHER RESULT INCASE THE USER RESTART HIS BROWSER AND RELOADS THE Page
-  */
-  localStorage.setItem('savedWeather',weather);
 
   let city = document.querySelector('.city');
   city.innerText = `${weather.name}, ${weather.sys.country}`;
