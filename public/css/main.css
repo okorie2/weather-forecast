@@ -6,7 +6,9 @@
     padding: 0;
 }
 
+
 html {
+    overflow-x: hidden;
     font-size: 18px;
 }
 
@@ -31,7 +33,7 @@ body {
 .midArea{
     background-color:whitesmoke;
     padding-left: 10%;
-    padding-bottom: 20%;
+    padding-bottom: 5%;
 }
 a{
     text-decoration: none;
@@ -42,7 +44,7 @@ h5{
     color: rgb(89, 100, 148);
 }
 .background {
-    background: url("/bg.jpg") no-repeat center center  fixed;
+    background: url("/bg.jpg")  no-repeat center center  fixed;
     height:50%;
     width: 100vw;
 }
@@ -55,6 +57,18 @@ button{
     border-radius: 20%;
     border: transparent;
     height: 100%;
+}
+a:focus{
+    color:#EB0486;
+    font-weight: bold;;
+}
+button:focus{
+    background-color: #EB0486;
+}
+*:focus{
+    outline-color: blue;
+    box-shadow:0 0 10px #EB0486;
+    border-color:blueviolet;
 }
 
 

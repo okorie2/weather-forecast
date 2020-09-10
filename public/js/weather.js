@@ -1,31 +1,19 @@
-/*!
-  THIS IS THE API KEYS CONFIGURATION
-  DONT TOUCH ELLA!
-*/
+
 const api = {
   key: "1155e26b699f069a99290c6ee02b220a",
   base: "https://api.openweathermap.org/data/2.5/"
 }
 
 
-/*!
-    THIS IS FOR CHECKING AND GETTING THE WEATHER RESULT FROM THE LOCALSTORAGE INCASE
-    THE USER PREVIOUSLY SAVED THE WEATHER RESULT 
-  */
 if (localStorage && localStorage.getItem('savedWeather')) {
   weatherResponse(localStorage.getItem('savedWeather'));
 }else {
-  
-  /*!
-    THIS IS FOR COLLECTING THE INPUT SEARCHES FROM THE HTML INPUT FIELD
-  */
+
   const search = document.querySelector('.search');
   search.addEventListener('keypress', setQuery);
 
 
-  /*!
-    THIS IS FOR SETTING THE KEYPRESS EVENT LISTENER TO RUN THE API REQUEST
-  */
+
   function setQuery(evt) {
     if (evt.keyCode == 13) {
       apiRequest(search.value);
@@ -33,9 +21,7 @@ if (localStorage && localStorage.getItem('savedWeather')) {
   }
 
 
-  /*!
-    THIS IS FOR GETTING THE WEATHER RESPONSE FOR THE INPUT FROM THE USER
-  */
+
   function apiRequest(query) {
     fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
       .then(weather => {
@@ -47,14 +33,8 @@ if (localStorage && localStorage.getItem('savedWeather')) {
 }
 
 
-/*!
-  THIS IS FOR PASSING THE RESPONSE IN SUITABLE FORMAT TO THE HTML PAGE
-*/
 function weatherResponse (weather) {
 
-  /*!
-    THIS IS FOR SAVING THE WEATHER RESULT INCASE THE USER RESTART HIS BROWSER AND RELOADS THE Page
-  */
   localStorage.setItem('savedWeather',JSON.stringify(weather));
 
   let city = document.querySelector('.city');
@@ -75,9 +55,6 @@ function weatherResponse (weather) {
 }
 
 
-/*!
-  THIS IS FOR COVERTING THE TIME FORMAT GIVEN BY THE API INTO HUMAN READABLE FORMAT
-*/
 function correctDate (time) {
   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];

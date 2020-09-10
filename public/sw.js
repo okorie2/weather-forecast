@@ -1,6 +1,4 @@
-/*!
-  DONT TOUCH ELLA!!!!!!
-*/
+
 const dynamicCacheName = 'site-dynamic-v1';
 // activate event
 self.addEventListener('activate', evt => {
