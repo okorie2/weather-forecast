@@ -3,7 +3,7 @@
 */
 {
   "name": "weather-forcast",
-  "short_name": "Ela",
+  "short_name": "Ella",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#4989dd",
@@ -11,8 +11,8 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "",
-      "type": "image/png", 
+      "src": "smash.jpg",
+      "type": "image/jpg", 
       "sizes": "72x72"
     }
   ]

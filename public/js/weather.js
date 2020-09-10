@@ -55,7 +55,7 @@ function weatherResponse (weather) {
   /*!
     THIS IS FOR SAVING THE WEATHER RESULT INCASE THE USER RESTART HIS BROWSER AND RELOADS THE Page
   */
-  localStorage.setItem('savedWeather',weather);
+  localStorage.setItem('savedWeather',JSON.stringify(weather));
 
   let city = document.querySelector('.city');
   city.innerText = `${weather.name}, ${weather.sys.country}`;
