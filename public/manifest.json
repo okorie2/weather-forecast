@@ -9,9 +9,29 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "smash.jpg",
-      "type": "image/jpg", 
+      "src": "smash-72x72.png",
+      "type": "image/png", 
       "sizes": "72x72"
+    },
+    {
+      "src": "smash-96x96.png",
+      "type":"image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src":"smash-128x128.png",
+      "type":"image/png",
+      "sizes":"128x128"
+    },
+    {
+      "src":"smash-144x144.png",
+      "type":"image/png",
+      "sizes":"144x144"
+    },
+    {
+      "src":"smash-152x152.png",
+      "type":"image/png",
+      "sizes":"152x152"
     }
   ]
 }
