@@ -44,7 +44,7 @@ h5{
     color: rgb(89, 100, 148);
 }
 .background {
-    background: url("/bg.jpg")  no-repeat center center  fixed;
+    background: url("../bg.jpg")  no-repeat center center  fixed;
     height:50%;
     width: 100vw;
 }

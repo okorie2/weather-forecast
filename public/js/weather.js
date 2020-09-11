@@ -12,9 +12,7 @@ if (localStorage && localStorage.getItem('savedWeather')) {
   weatherResponse(cleaned);
 }
 
-/*!
-  THIS IS FOR COLLECTING THE INPUT SEARCHES FROM THE HTML INPUT FIELD
-*/
+
 const search = document.querySelector('.search');
 search.addEventListener('keypress', setQuery);
 
