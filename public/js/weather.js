@@ -6,36 +6,44 @@ const api = {
 
 
 if (localStorage && localStorage.getItem('savedWeather')) {
-  weatherResponse(localStorage.getItem('savedWeather'));
-}else {
+  let storageProfileString = localStorage.getItem("savedWeather");
+  console.log("String saved in LocalStorage", storageProfileString);
+  let cleaned = JSON.parse(storageProfileString);
+  weatherResponse(cleaned);
+}
 
-  const search = document.querySelector('.search');
-  search.addEventListener('keypress', setQuery);
+/*!
+  THIS IS FOR COLLECTING THE INPUT SEARCHES FROM THE HTML INPUT FIELD
+*/
+const search = document.querySelector('.search');
+search.addEventListener('keypress', setQuery);
 
 
-
-  function setQuery(evt) {
-    if (evt.keyCode == 13) {
-      apiRequest(search.value);
-    }
+function setQuery(evt) {
+  if (evt.keyCode == 13) {
+    localStorage.clear();
+    apiRequest(search.value);
   }
+}
 
 
 
-  function apiRequest(query) {
-    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-      .then(weather => {
-        return weather.json();
-      })
-      .then(weatherResponse);
-  }
-  
+function apiRequest(query) {
+  fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+    .then(weather => {
+      return weather.json();
+    })
+    .then(save)
+    .catch(err => alert('You did something wrong', err));
+}
+
+function save(data) {
+  localStorage.setItem('savedWeather',JSON.stringify(data));
+  weatherResponse(data);
 }
 
 
 function weatherResponse (weather) {
-
-  localStorage.setItem('savedWeather',JSON.stringify(weather));
 
   let city = document.querySelector('.city');
   city.innerText = `${weather.name}, ${weather.sys.country}`;
